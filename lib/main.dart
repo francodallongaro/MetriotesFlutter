@@ -25,7 +25,7 @@ class _ComoEstasState extends State<ComoEstas> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFe5e5e5),
       body: SafeArea(
         child: Column(
           children: [
@@ -33,26 +33,34 @@ class _ComoEstasState extends State<ComoEstas> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Text(
-                    'Metas',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 36.0,
-                    ),
-                  ),
-                  Text(
-                    '¿Cómo estás?',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  Text(
-                    'Inspiración',
-                    style: TextStyle(color: Colors.black),
-                  ),
+                  TextNavBar(label: 'Metas', color: Color(0xFFEECD57)),
+                  SizedBox(width: 20.0),
+                  TextNavBar(label: '¿Cómo estás?', color: Color(0xFF2EC5BC)),
+                  SizedBox(width: 20.0),
+                  TextNavBar(label: 'Inspiración', color: Color(0xFFE73A97)),
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class TextNavBar extends StatelessWidget {
+  TextNavBar({@required this.label, @required this.color});
+  final Color color;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      label,
+      style: TextStyle(
+        color: color,
+        fontSize: 36.0,
+        fontFamily: 'Poppins',
       ),
     );
   }
