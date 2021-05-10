@@ -4,6 +4,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class InputPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
+    final texts = ["Frase 1", "Frase 2", "Frase 3"];
+    final counter = useState(0);
     return Scaffold(
       backgroundColor: Color(0xFFEEEEEE),
       body: SafeArea(
@@ -15,7 +17,7 @@ class InputPage extends HookWidget {
               padding: const EdgeInsets.all(40.0),
               child: Center(
                 child: Text(
-                  "¿Cómo describirías el día de hoy en una frase?",
+                  texts[counter.value],
                   style: TextStyle(
                     color: Color(0xFF2EC5BC),
                     fontSize: 24.0,
@@ -52,14 +54,19 @@ class InputPage extends HookWidget {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20.0),
-                    child: Text(
-                      ">",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 50.0,
-                        fontWeight: FontWeight.w300,
+                  GestureDetector(
+                    onTap: () {
+                      counter.value++;
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 20.0),
+                      child: Text(
+                        ">",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 50.0,
+                          fontWeight: FontWeight.w300,
+                        ),
                       ),
                     ),
                   ),
